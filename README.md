@@ -1,3 +1,12 @@
+# fork自[qcloud-upload](https://github.com/yingye/qcloud-upload);
+
+window下使用，不能再cos上形成文件夹。
+
+## 新增一个选项
+
+* `dir`(boolean): true 强制使用‘/’作为文件夹的分割符，这样能在cos上形成文件夹。
+
+
 # qcloud-upload
 
 基于 `nodejs` 腾讯云上传插件，支持自定义文件前缀、覆盖及非覆盖上传方式
@@ -26,7 +35,8 @@ const options = {
   },
   prefix: 'test',
   src: './examples',
-  overWrite: 1
+  overWrite: 1,
+  dir: true
 };
 
 uploadQcloud(options);

@@ -19,7 +19,8 @@ module.exports = function (config = {}) {
     Headers: false,
     src: '',
     dirPath: '',
-    distDirName: ''
+    distDirName: '',
+    dir: false
   }, config);
   
   if (config.Bucket.indexOf('-') === -1) {
@@ -74,6 +75,10 @@ module.exports = function (config = {}) {
   // upload files
   function upload(file, fileRelativePath, filePath) {
     var fileKey = path.join(config.prefix, fileRelativePath);
+    //以‘/’为分隔符，cos会生成对应的文件夹。
+    if(config.dir){
+      fileKey = fileKey.replace(/\\/g,"/");
+    }
     var handler = function () {
       var defer = Q.defer();
       upload();
