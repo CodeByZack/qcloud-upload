@@ -1,11 +1,6 @@
 # fork自[qcloud-upload](https://github.com/yingye/qcloud-upload);
 
-window下使用，不能再cos上形成文件夹。
-
-## 新增一个选项
-
-* `dir`(boolean): true 强制使用‘/’作为文件夹的分割符，这样能在cos上形成文件夹。
-
+fix window下使用，分隔符为"\",现已修改为“/”。
 
 # qcloud-upload
 
@@ -23,7 +18,14 @@ Step 1. 创建文件 `upload.js`
 
 ```js
 const uploadQcloud = require('qcloud-upload');
-
+const setHeaders = (obj)=>{
+    const shouldUseGzip = [".js",".css",".gz"];
+    const ext = path.parse(obj.Key).ext;
+    if(shouldUseGzip.indexOf(ext)!=-1){
+        obj.ContentEncoding = "gzip";
+    }
+    return obj;
+};
 const options = {
   AppId: 'STRING_VALUE',
   Region: 'STRING_VALUE',
@@ -36,7 +38,8 @@ const options = {
   prefix: 'test',
   src: './examples',
   overWrite: 1,
-  dir: true
+  clearDistDir : true,
+  setHeaders : setHeaders
 };
 
 uploadQcloud(options);
@@ -67,6 +70,12 @@ Type: Object
 以下 API 在 v1.3.0+ 版本中废弃：
 * `dirPath`(string): 上传文件夹的 **绝对路径** ，以本项目 examples 文件夹为例，应设置 `path.resolve(__dirname, './examples')`。
 * `distDirName`(string): 截取文件路径参考项，以本项目 examples 文件夹为例，不设置该项，上传腾讯云后文件路径为 `https://static.demo.com/your-options.prefix/Users/yingye/Desktop/qcloud-upload/examples/img.png`。若设置该项 `distDirName: 'examples'` 后，文件URL为 `https://static.demo.com/your-options.prefix/examples/img.png`，相当于对 `dirPath` 绝对路径做了截取操作。
+
+
+##### 新增两个选项
+
+* `clearDistDir`(boolean): false 上传之前，清除prefix下的所有文件。
+* `setHeaders`(function): null 自用，根据文件名后缀添加一些Header。
 
 ##### ! `AppId` 和 `Bucket` 的说明：
 
