@@ -9,7 +9,7 @@ fix window下使用，分隔符为"\",现已修改为“/”。
 ## Install
 
 ```
-npm install --save-dev qcloud-upload
+npm install --save-dev qcos-upload
 ```
 
 ## Usage

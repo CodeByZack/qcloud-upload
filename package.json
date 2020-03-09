@@ -1,6 +1,6 @@
 {
-  "name": "qcloud-upload",
-  "version": "1.5.0",
+  "name": "qcos-upload",
+  "version": "1.0.0",
   "description": "cos upload",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yingye/qcloud-upload.git"
+    "url": "git+https://github.com/CodeByZack/qcloud-upload.git"
   },
   "keywords": [
     "node",
@@ -18,12 +18,12 @@
     "cdn",
     "upload"
   ],
-  "author": "yingye",
+  "author": "zackdk",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yingye/qcloud-upload/issues"
+    "url": "https://github.com/CodeByZack/qcloud-upload/issues"
   },
-  "homepage": "https://github.com/yingye/qcloud-upload#readme",
+  "homepage": "https://github.com/CodeByZack/qcloud-upload#readme",
   "dependencies": {
     "chalk": "^2.3.0",
     "cos-nodejs-sdk-v5": "^2.2.5",
