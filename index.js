@@ -149,7 +149,7 @@ module.exports = function(config = {}) {
       }
 
       function putFile() {
-        let obj = assign(config.Headers || {}, {
+        let obj = assign({},config.Headers || {}, {
           Bucket: config.Bucket,
           Region: config.Region,
           Key: fileKey,

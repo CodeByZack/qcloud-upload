@@ -1,6 +1,8 @@
 # fork自[qcloud-upload](https://github.com/yingye/qcloud-upload);
 
-fix window下使用，分隔符为"\",现已修改为“/”。
+fix window下使用，分隔符为"\\",现已修改为“/”。
+
+增加两个新选项`clearDistDir`和`setHeaders`。
 
 # qcloud-upload
 
@@ -19,10 +21,9 @@ Step 1. 创建文件 `upload.js`
 ```js
 const uploadQcloud = require('qcloud-upload');
 const setHeaders = (obj)=>{
-    const shouldUseGzip = [".js",".css",".gz"];
-    const ext = path.parse(obj.Key).ext;
-    if(shouldUseGzip.indexOf(ext)!=-1){
-        obj.ContentEncoding = "gzip";
+    const reg = /.*\.(js|css|gz)$/
+    if(reg.test(obj.Key)){
+      obj.ContentEncoding = "gzip";
     }
     return obj;
 };
