@@ -1,6 +1,6 @@
 {
   "name": "qcos-upload",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cos upload",
   "main": "index.js",
   "scripts": {
